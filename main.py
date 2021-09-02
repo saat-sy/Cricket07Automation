@@ -1,3 +1,5 @@
+### THIS CODE IS 0% COMPLETED. IT IS STILL UNDER DEVELOPMENT ###
+
 import numpy as np
 from PIL import ImageGrab
 import cv2
