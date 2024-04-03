@@ -3,9 +3,9 @@ import numpy as np
 class Constants:
     # Area of gameplay on the monitor
     SC_UPPER_LEFT = 0
-    SC_UPPER_RIGHT = 40
+    SC_UPPER_RIGHT = 0
     SC_LOWER_LEFT = 800
-    SC_LOWER_RIGHT = 640
+    SC_LOWER_RIGHT = 600
 
     # Pitch
     PITCH_START_X = 241

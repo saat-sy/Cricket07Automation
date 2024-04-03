@@ -1,10 +1,10 @@
 import cv2
-import time
 import keyboard as kb
-import time
 import os
 import numpy as np
 from Cricket07Automation.helper.screen import Screen
+
+print("TODO: Check Screen()")
 
 NO_KEY_SELECTED = "NO_KEY"
 ALL_MOVES = ['shift+s+right+down', 'shift+s+left+down', 'shift+s+down', 'shift+s+right', 'shift+s+left', NO_KEY_SELECTED]
@@ -48,7 +48,7 @@ if __name__ == "__main__":
         if screen.play:
             screenshot = screen.fullscreen
             screenshot = cv2.cvtColor(screenshot, cv2.COLOR_BGR2GRAY)
-            screenshot = cv2.resize(screenshot, (80, 60))
+            screenshot = cv2.resize(screenshot, (227, 227))
 
             trainingDataX.append(screenshot)
             trainingDataY.append(key_selected())

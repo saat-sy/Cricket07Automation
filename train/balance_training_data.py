@@ -3,9 +3,11 @@ import pandas as pd
 from collections import Counter
 from random import shuffle
 import os
+import ast
 
 inputFilename = input("Enter the input filename: ")
 FILE_NAME = os.path.join("train", "data", "raw", inputFilename)
+ALL_MOVES = ['shift+s+right+down', 'shift+s+left+down', 'shift+s+down', 'shift+s+right', 'shift+s+left', "NO_KEY_SELECTED"]
 
 data = np.load(FILE_NAME)
 X = data['X']
@@ -19,7 +21,14 @@ df = pd.DataFrame(trainingData)
 
 eachMove = Counter(df[1].apply(str))
 
-print(eachMove)
+one_hot_dict_int = {ALL_MOVES[(ast.literal_eval(k.replace(' ', ','))).index(1)]: v for k, v in eachMove.items()}
+
+df = pd.DataFrame(list(one_hot_dict_int.items()), columns=['Move', 'Frequency'])
+
+print()
+print(df)
+print()
+
 print("Will be balanced to:", min(eachMove.values()) * 6)
 print()
 
