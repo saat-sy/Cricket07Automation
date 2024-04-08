@@ -16,10 +16,7 @@ class Controller:
         self.j.data.wAxisY= 0x4000
         self.j.update()
 
-    def play(self, index):
-        if index == 5:
-            return
-        
+    def play(self, index):       
         if index == 0:
             # shift+s+right+down
             self.playShot(x=0x8000, y=0x8000)
@@ -44,7 +41,7 @@ class Controller:
         self.j.data.lButtons = self.buttons
         self.j.update()
 
-        time.sleep(0.1)
+        time.sleep(0.15)
 
         self.j.data.wAxisX= 0x4000
         self.j.update()
@@ -53,4 +50,4 @@ class Controller:
         self.j.data.lButtons = 0
         self.j.update()
 
-        time.sleep(0.1)
+        time.sleep(0.15)

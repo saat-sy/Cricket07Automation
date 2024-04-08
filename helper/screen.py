@@ -38,10 +38,7 @@ class Screen:
 
         pixels = cv2.countNonZero(self.blue_mask)
 
-        # if pixels > 10 and pixels < 200:
-        #     return True
-        
-        if pixels > 10:
+        if pixels > 10 and pixels < 200:
             return True
-        
+    
         return False

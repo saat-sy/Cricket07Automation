@@ -6,8 +6,7 @@ from Cricket07Automation.helper.screen import Screen
 
 print("TODO: Check Screen()")
 
-NO_KEY_SELECTED = "NO_KEY"
-ALL_MOVES = ['shift+s+right+down', 'shift+s+left+down', 'shift+s+down', 'shift+s+right', 'shift+s+left', NO_KEY_SELECTED]
+ALL_MOVES = ['shift+s+right+down', 'shift+s+left+down', 'shift+s+down', 'shift+s+right', 'shift+s+left']
 FILE_NAME = os.path.join("train", "data", "raw", "training_data.npz")
 
 trainingDataX = []
@@ -27,7 +26,7 @@ def key_selected():
     elif kb.is_pressed('shift+s+left'):
         vector[ALL_MOVES.index('shift+s+left')] = 1
     else:
-        vector[ALL_MOVES.index(NO_KEY_SELECTED)] = 1
+        return []
 
     return np.array(vector)
 
@@ -38,6 +37,7 @@ if __name__ == "__main__":
     if os.path.isfile(FILE_NAME):
         print('File exists! Loading data...')
         data = np.load(FILE_NAME)
+        print(data)
         trainingDataX = list(data['X'])
         trainingDataY = list(data['Y'])
     else:
@@ -50,13 +50,14 @@ if __name__ == "__main__":
             screenshot = cv2.cvtColor(screenshot, cv2.COLOR_BGR2GRAY)
             screenshot = cv2.resize(screenshot, (227, 227))
 
-            trainingDataX.append(screenshot)
-            trainingDataY.append(key_selected())
+            key = key_selected()
+            if len(key) > 0:
+                trainingDataX.append(screenshot)
+                trainingDataY.append(key)
+                update += 1
+                print("Captured", update, "frames")
 
-            update += 1
-            print("Captured", update, "frames")
-
-            if len(trainingDataY) % 100 == 0:
+            if update % 10 == 0:
                 print("Collected", len(trainingDataY), "frames")
                 np.savez(FILE_NAME, X=trainingDataX, Y=trainingDataY)
 

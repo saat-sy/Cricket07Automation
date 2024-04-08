@@ -7,7 +7,7 @@ import ast
 
 inputFilename = input("Enter the input filename: ")
 FILE_NAME = os.path.join("train", "data", "raw", inputFilename)
-ALL_MOVES = ['shift+s+right+down', 'shift+s+left+down', 'shift+s+down', 'shift+s+right', 'shift+s+left', "NO_KEY_SELECTED"]
+ALL_MOVES = ['shift+s+right+down', 'shift+s+left+down', 'shift+s+down', 'shift+s+right', 'shift+s+left']
 
 data = np.load(FILE_NAME)
 X = data['X']
