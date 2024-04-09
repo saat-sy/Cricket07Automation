@@ -6,7 +6,7 @@ Using neural networks, the shot selection for different kinds of deliveries is s
 
 Here's a small demo of the network choosing the shots.
 
-https://github.com/saat-sy/Cricket07Automation/assets/67848108/bda1ea9a-e9e5-48a5-b251-d502436e10fe
+https://github.com/saat-sy/Cricket07Automation/assets/67848108/62419d9b-1bf7-43e6-805f-ae43a697f99c
 
 The framerate is quite low as my CPU usage maxed out
 
